@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Light Anti-Cheat")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Anti Cheat for Unity Games")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Destruction Games")]
-[assembly: AssemblyProduct("Light Anti-Cheat Windows")]
-[assembly: AssemblyCopyright("Copyright © Destruction Games  2021")]
+[assembly: AssemblyProduct("Light Anti-Cheat")]
+[assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("0ea8c923-1256-41e9-a655-a25b64c21d4f")]
+[assembly: Guid("99a5a842-bea5-4ad0-965f-589017432ae4")]
 
 // Version information for an assembly consists of the following four values:
 //

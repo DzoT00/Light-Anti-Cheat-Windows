@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Light Anti-Cheat Windows", "Light Anti-Cheat Windows.csproj", "{0EA8C923-1256-41E9-A655-A25B64C21D4F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basic Anti-Cheat (BAC) - UnityWindows", "Basic Anti-Cheat (BAC) - UnityWindows.csproj", "{99A5A842-BEA5-4AD0-965F-589017432AE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0EA8C923-1256-41E9-A655-A25B64C21D4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0EA8C923-1256-41E9-A655-A25B64C21D4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0EA8C923-1256-41E9-A655-A25B64C21D4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0EA8C923-1256-41E9-A655-A25B64C21D4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99A5A842-BEA5-4AD0-965F-589017432AE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99A5A842-BEA5-4AD0-965F-589017432AE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99A5A842-BEA5-4AD0-965F-589017432AE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99A5A842-BEA5-4AD0-965F-589017432AE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {AAAFC9A0-EEBA-4616-AF08-BB992154CBFA}
+		SolutionGuid = {2EB8C0AC-550B-447D-8897-CD05D4C9F3E2}
 	EndGlobalSection
 EndGlobal
