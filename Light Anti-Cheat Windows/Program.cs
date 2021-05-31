@@ -57,7 +57,7 @@ namespace BasicAntiCheatUnityWindows
 
         public static void writeLineToLogFile(string message)
         {
-            File.AppendAllText(antiCheatLogPath, message + Environment.NewLine);
+            File.AppendAllText(antiCheatLogPath, Util.encryptedString(message) + Environment.NewLine);
         }
 
         public static string getApplicationProcessName()

@@ -97,13 +97,15 @@ namespace BasicAntiCheatUnityWindows
             return randomString;
         }
 
+        private static string hash = "DN!€%E67#)/0/XX5O9O(DJ=TW)I%H(J(?8D/GO~E$'KIWPR/A(9P@€Z?VRX€€@0I7#7FT7YA&JDE#8~GYT$RG?~*JKS/(AJ=XC0X7MURQ919)U@%URW1HJC&C9~JP8J%AL6~IYYM'UAVQMG&P5UY369N#$V*PKC7Z/84&*3~=K2$J5X(2H?8O!JS0S~WC0~%RS~120ASCX5TD*ETO5TIQTS&5QEVAH?QN(U(9€MCH05)E(O2N2HWG&V'#H~MW3S€";
+
         public static string encryptedString(string input)
         {
             byte[] data = UTF8Encoding.UTF8.GetBytes(input);
 
             using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
             {
-                byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(generateHash()));
+                byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
                 
                 using(TripleDESCryptoServiceProvider tripDes = new TripleDESCryptoServiceProvider() { Key = keys, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
                 {
@@ -120,7 +122,7 @@ namespace BasicAntiCheatUnityWindows
 
             using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
             {
-                byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(generateHash()));
+                byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
 
                 using (TripleDESCryptoServiceProvider tripDes = new TripleDESCryptoServiceProvider() { Key = keys, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
                 {

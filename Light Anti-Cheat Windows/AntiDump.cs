@@ -10,9 +10,6 @@ namespace BasicAntiCheatUnityWindows
 {
     internal class AntiDump
     {
-        [DllImport("kernel32.dll")]
-        static extern unsafe bool VirtualProtect(byte* lpAddress, int dwSize, uint flNewProtect, out uint lpflOldProtect);
-
         public static unsafe void Initialize()
         {
             uint old;
@@ -41,7 +38,7 @@ namespace BasicAntiCheatUnityWindows
                     byte* oftMod = bas + *(uint*)importDir;
                     byte* modName = bas + *(uint*)(importDir + 12);
                     byte* funcName = bas + *(uint*)oftMod + 2;
-                    VirtualProtect(modName, 11, 0x40, out old);
+                    NativeImport.VirtualProtect(modName, 11, 0x40, out old);
 
                     *(uint*)@new = 0x6c64746e;
                     *((uint*)@new + 1) = 0x6c642e6c;
@@ -51,7 +48,7 @@ namespace BasicAntiCheatUnityWindows
                     for (int i = 0; i < 11; i++)
                         *(modName + i) = *(@new + i);
 
-                    VirtualProtect(funcName, 11, 0x40, out old);
+                    NativeImport.VirtualProtect(funcName, 11, 0x40, out old);
 
                     *(uint*)@new = 0x6f43744e;
                     *((uint*)@new + 1) = 0x6e69746e;
@@ -64,18 +61,18 @@ namespace BasicAntiCheatUnityWindows
 
                 for (int i = 0; i < sectNum; i++)
                 {
-                    VirtualProtect(ptr, 8, 0x40, out old);
+                    NativeImport.VirtualProtect(ptr, 8, 0x40, out old);
                     Marshal.Copy(new byte[8], 0, (IntPtr)ptr, 8);
                     ptr += 0x28;
                 }
-                VirtualProtect(mdDir, 0x48, 0x40, out old);
+                NativeImport.VirtualProtect(mdDir, 0x48, 0x40, out old);
                 byte* mdHdr = bas + *(uint*)(mdDir + 8);
                 *(uint*)mdDir = 0;
                 *((uint*)mdDir + 1) = 0;
                 *((uint*)mdDir + 2) = 0;
                 *((uint*)mdDir + 3) = 0;
 
-                VirtualProtect(mdHdr, 4, 0x40, out old);
+                NativeImport.VirtualProtect(mdHdr, 4, 0x40, out old);
                 *(uint*)mdHdr = 0;
                 mdHdr += 12;
                 mdHdr += *(uint*)mdHdr;
@@ -85,14 +82,14 @@ namespace BasicAntiCheatUnityWindows
                 mdHdr += 2;
                 for (int i = 0; i < numOfStream; i++)
                 {
-                    VirtualProtect(mdHdr, 8, 0x40, out old);
+                    NativeImport.VirtualProtect(mdHdr, 8, 0x40, out old);
                     //*(uint*)mdHdr = 0;
                     mdHdr += 4;
                     //*(uint*)mdHdr = 0;
                     mdHdr += 4;
                     for (int ii = 0; ii < 8; ii++)
                     {
-                        VirtualProtect(mdHdr, 4, 0x40, out old);
+                        NativeImport.VirtualProtect(mdHdr, 4, 0x40, out old);
                         *mdHdr = 0;
                         mdHdr++;
                         if (*mdHdr == 0)
@@ -132,7 +129,7 @@ namespace BasicAntiCheatUnityWindows
                 var rAdrs = new uint[sectNum];
                 for (int i = 0; i < sectNum; i++)
                 {
-                    VirtualProtect(ptr, 8, 0x40, out old);
+                    NativeImport.VirtualProtect(ptr, 8, 0x40, out old);
                     Marshal.Copy(new byte[8], 0, (IntPtr)ptr, 8);
                     vAdrs[i] = *(uint*)(ptr + 12);
                     vSizes[i] = *(uint*)(ptr + 8);
@@ -172,7 +169,7 @@ namespace BasicAntiCheatUnityWindows
                             funcName = funcName - vAdrs[i] + rAdrs[i];
                             break;
                         }
-                    VirtualProtect(bas + modName, 11, 0x40, out old);
+                    NativeImport.VirtualProtect(bas + modName, 11, 0x40, out old);
 
                     *(uint*)@new = 0x6c64746e;
                     *((uint*)@new + 1) = 0x6c642e6c;
@@ -182,7 +179,7 @@ namespace BasicAntiCheatUnityWindows
                     for (int i = 0; i < 11; i++)
                         *(bas + modName + i) = *(@new + i);
 
-                    VirtualProtect(bas + funcName, 11, 0x40, out old);
+                    NativeImport.VirtualProtect(bas + funcName, 11, 0x40, out old);
 
                     *(uint*)@new = 0x6f43744e;
                     *((uint*)@new + 1) = 0x6e69746e;
@@ -195,13 +192,13 @@ namespace BasicAntiCheatUnityWindows
 
 
                 for (int i = 0; i < sectNum; i++)
-                    if (vAdrs[i] <= mdDir && mdDir < vAdrs[i] + vSizes[i])
-                    {
-                        mdDir = mdDir - vAdrs[i] + rAdrs[i];
-                        break;
-                    }
+                if (vAdrs[i] <= mdDir && mdDir < vAdrs[i] + vSizes[i])
+                {
+                    mdDir = mdDir - vAdrs[i] + rAdrs[i];
+                    break;
+                }
                 byte* mdDirPtr = bas + mdDir;
-                VirtualProtect(mdDirPtr, 0x48, 0x40, out old);
+                NativeImport.VirtualProtect(mdDirPtr, 0x48, 0x40, out old);
                 uint mdHdr = *(uint*)(mdDirPtr + 8);
                 for (int i = 0; i < sectNum; i++)
                     if (vAdrs[i] <= mdHdr && mdHdr < vAdrs[i] + vSizes[i])
@@ -216,7 +213,7 @@ namespace BasicAntiCheatUnityWindows
 
 
                 byte* mdHdrPtr = bas + mdHdr;
-                VirtualProtect(mdHdrPtr, 4, 0x40, out old);
+                NativeImport.VirtualProtect(mdHdrPtr, 4, 0x40, out old);
                 *(uint*)mdHdrPtr = 0;
                 mdHdrPtr += 12;
                 mdHdrPtr += *(uint*)mdHdrPtr;
@@ -226,14 +223,14 @@ namespace BasicAntiCheatUnityWindows
                 mdHdrPtr += 2;
                 for (int i = 0; i < numOfStream; i++)
                 {
-                    VirtualProtect(mdHdrPtr, 8, 0x40, out old);
+                    NativeImport.VirtualProtect(mdHdrPtr, 8, 0x40, out old);
                     //*(uint*)mdHdrPtr = 0;
                     mdHdrPtr += 4;
                     //*(uint*)mdHdrPtr = 0;
                     mdHdrPtr += 4;
                     for (int ii = 0; ii < 8; ii++)
                     {
-                        VirtualProtect(mdHdrPtr, 4, 0x40, out old);
+                        NativeImport.VirtualProtect(mdHdrPtr, 4, 0x40, out old);
                         *mdHdrPtr = 0;
                         mdHdrPtr++;
                         if (*mdHdrPtr == 0)

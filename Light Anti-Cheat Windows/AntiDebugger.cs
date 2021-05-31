@@ -14,9 +14,6 @@ namespace BasicAntiCheatUnityWindows
         private static bool detected;
         public static string[] debuggers = { "ida64", "dbg64" };
 
-        [DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
-        public static extern bool CheckRemoteDebuggerPresent(IntPtr hProcess, ref bool isDebuggerPresent);
-
         public static void Initialize()
         {
             UpdateAntiDebug();
@@ -36,7 +33,7 @@ namespace BasicAntiCheatUnityWindows
 
             //Block Debugger Atatching to the Game
             bool isDebuggerPresent = false;
-            CheckRemoteDebuggerPresent(Process.GetCurrentProcess().Handle, ref isDebuggerPresent);
+            NativeImport.CheckRemoteDebuggerPresent(Process.GetCurrentProcess().Handle, ref isDebuggerPresent);
             if (isDebuggerPresent)
             {
                 //Console.WriteLine("Debugger Attached: " + isDebuggerPresent + "\n");
