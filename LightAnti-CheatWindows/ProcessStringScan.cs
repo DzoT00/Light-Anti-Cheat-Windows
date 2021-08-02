@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace BasicAntiCheatUnityWindows
+namespace LightAnti_CheatWindows
 {
     public class ProcessStringScan
     {
@@ -43,7 +43,6 @@ namespace BasicAntiCheatUnityWindows
                         {
                             if (line.Contains(ProcessScanner.ignore))
                             {
-                                Console.WriteLine("pog");
                                 break;
                             }
 
@@ -51,7 +50,6 @@ namespace BasicAntiCheatUnityWindows
                             {
                                 detections++;
                                 detected = true;
-                                Console.WriteLine("poggerssss");
                                 break;
                             }
                         }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace BasicAntiCheatUnityWindows
+namespace LightAnti_CheatWindows
 {
     public class AntiCheatInitializer
     {
@@ -14,9 +14,15 @@ namespace BasicAntiCheatUnityWindows
         public bool AntiDebug = false;
         public bool SpeedHackDetection = false;
 
+        private static Thread updateThread;
+
         public static void Initialize()
         {
             InitThread();
+
+            updateThread = new Thread(Update);
+            updateThread.Name = "UpdateThread";
+            updateThread.Start();
 
             Program.clearLogFile();
             Program.createLogFile();
@@ -25,15 +31,23 @@ namespace BasicAntiCheatUnityWindows
             AntiDebugger.Initialize();
             ProcessScanner.Initialize();
             ProcessStringScan.Initialize();
+            SpeedHackDetector.Initialize();
             AntiDump.Initialize();
+
+            Console.WriteLine(CheckProgramSignature.getMD5SignatureFromFile("C:\\Users\\niclas\\Desktop\\libil2cpp.so"));
         }
 
         public static void UpdateDetections()
         {
+            CheckProgramSignature.UpdateProcessList();
+            CheckProgramSignature.ScanAllRunningProcesses();
+            CheckProgramSignature.DetectSignature();
+
             CheckDetections.convertToRightBool();
 
             AntiDebugger.UpdateAntiDebug();
             ProcessScanner.UpdateProcessList();
+            CheckProgramSignature.UpdateProcessList();
 
             CheckDetections.SendIfDetected();
         }
@@ -46,6 +60,7 @@ namespace BasicAntiCheatUnityWindows
             Console.WriteLine("Invalid Signature: " + CheckDetections.InvalidSignatureDetected);
             Console.WriteLine("Process Detection: " + ProcessScanner.detected + " " + ProcessScanner.detectedApplicationPath);
             Console.WriteLine("Found Suspicious String: " + CheckDetections.StringInProcessDetected);
+            Console.WriteLine("Found Suspicious Signature: " + CheckDetections.SignatureDetected);
         }
 
         #region Threading
@@ -87,6 +102,16 @@ namespace BasicAntiCheatUnityWindows
                     }
                 }
             }
+        }
+
+        #endregion
+
+        #region Updating
+
+        public static void Update()
+        {
+            Program.deltaTime++;
+            SpeedHackDetector.UpdateDetection();
         }
 
         #endregion

@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BasicAntiCheatUnityWindows
+namespace LightAnti_CheatWindows
 {
     public class Util
     {
@@ -48,7 +48,7 @@ namespace BasicAntiCheatUnityWindows
 
             foreach (ProcessThread pT in process.Threads)
             {
-                IntPtr pOpenThread = NativeImport.OpenThread(Enums.ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
+                IntPtr pOpenThread = NativeImport.OpenThread(NativeImport.ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
 
                 if (pOpenThread == IntPtr.Zero)
                 {
@@ -67,7 +67,7 @@ namespace BasicAntiCheatUnityWindows
 
             foreach (ProcessThread pT in process.Threads)
             {
-                IntPtr pOpenThread = NativeImport.OpenThread(Enums.ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
+                IntPtr pOpenThread = NativeImport.OpenThread(NativeImport.ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
 
                 if (pOpenThread == IntPtr.Zero)
                 {

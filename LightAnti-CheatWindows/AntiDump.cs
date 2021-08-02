@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BasicAntiCheatUnityWindows
+namespace LightAnti_CheatWindows
 {
     internal class AntiDump
     {

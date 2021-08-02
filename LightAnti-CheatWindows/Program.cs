@@ -1,31 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
+using System.Windows.Forms;
 
-namespace BasicAntiCheatUnityWindows
+namespace LightAnti_CheatWindows
 {
-    public class Program
+    public static class Program
     {
-        [DllImport("kernel32.dll")]
-        static extern IntPtr GetConsoleWindow();
-        [DllImport("user32.dll")]
-        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-        const int SW_HIDE = 0;
-
         public static string GameName = "";
-        public static string antiCheatLogPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\LightACLog.txt";
+        public static string antiCheatLogPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\LightACLog.txt";
+
+        public static int deltaTime;
 
         public static void Main(string[] args)
         {
-            var handle = GetConsoleWindow();
-            ShowWindow(handle, SW_HIDE);
-
             AntiCheatInitializer.Initialize();
-            Console.ReadKey();
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new LightAntiCheat());
         }
 
         public static void createLogFile()

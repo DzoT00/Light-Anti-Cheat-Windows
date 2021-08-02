@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace BasicAntiCheatUnityWindows
+namespace LightAnti_CheatWindows
 {
     public class CheckDetections
     {
@@ -18,6 +18,7 @@ namespace BasicAntiCheatUnityWindows
         public static bool InvalidSignatureDetected;
         public static bool ProcessDetected;
         public static bool StringInProcessDetected;
+        public static bool SignatureDetected;
 
         public static void convertToRightBool()
         {
@@ -34,7 +35,10 @@ namespace BasicAntiCheatUnityWindows
                 ProcessDetected = true;
 
             if (ProcessStringScan.isDetected())
-                StringInProcessDetected = true; 
+                StringInProcessDetected = true;
+
+            if (CheckProgramSignature.Detected)
+                SignatureDetected = true;
         }
 
         public static bool detectedSomething()
@@ -64,6 +68,12 @@ namespace BasicAntiCheatUnityWindows
                 detection = "suspiciousProcess";
                 return true;
             }
+            else if (SignatureDetected)
+            {
+                detection = "suspiciousSignature";
+                return true;
+            }
+
             detection = "";
             return false;
         }
