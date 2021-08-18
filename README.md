@@ -8,6 +8,8 @@
 - Verify the signature of the AntiCheat to detect changes
 - Anti Debugger
 - Scan For Suspicious Processes and strings in processes
+- Scan For Signatures of running Processes to detect renamed cheat engine
+- Anti Memory Dump
 
  # How to Use
  1. Drag the Light Anti-Cheat prefab into your Scene
