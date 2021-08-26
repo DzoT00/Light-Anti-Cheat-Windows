@@ -20,3 +20,6 @@
 4. Build your game with Il2cpp.
 5. Copy the Light Anti-Cheat.exe file into your build game folder.
 6. Done!
+
+# Contact
+Discord: polaryyoutube#2332
