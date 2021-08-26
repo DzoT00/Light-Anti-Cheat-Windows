@@ -1,5 +1,5 @@
 # Light Anti-Cheat Windows
- Anti Cheat for Unity Games
+ Anti Cheat for Unity Games (Could potentionally used for any game engine)
  
  # Features
 - Speed Hack Detection (still in work)
