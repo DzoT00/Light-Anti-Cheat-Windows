@@ -14,7 +14,7 @@ namespace LightAnti_CheatWindows
         public static List<Process> currentlyRunningProcesses = new List<Process>();
         public static List<string> suspiciousProcessNames = new List<string>();
 
-        public static string[] suspiciousProcessNamesArray = { "OLLYDBG", "cheatengine-x86_64", "ReClassEx", "ReClassEx64", "x64dbg", "x32dbg", "IDA Pro", "Immunity Debugger", "Ghidra", "de4dot", "de4dot-x64", "ida", "ida64", "dotPeek64", "dotPeek32", "Fiddler", "dnSpy", "dnSpy-x86", "dnSpy.Console" };
+        public static string[] suspiciousProcessNamesArray = { "OLLYDBG", "cheatengine-x86_64", "ReClassEx", "ReClassEx64", "x64dbg", "x32dbg", "IDA Pro", "Immunity Debugger", "Xenos", "Dll2C", "Extreme Injector v3", "Extreme Injector", "Xenos64", "Ghidra", "de4dot", "de4dot-x64", "ida", "ida64", "dotPeek64", "dotPeek32", "Fiddler", "dnSpy", "dnSpy-x86", "dnSpy.Console" };
         public static string ignore = "Light Anti-Cheat";
 
         public static string detectedApplication;

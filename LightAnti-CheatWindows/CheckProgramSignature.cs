@@ -41,20 +41,19 @@ namespace LightAnti_CheatWindows
 
         public static void ScanAllRunningProcesses()
         {
-            foreach (Process proc in currentlyRunningProcesses)
+            try
             {
-                try
+                foreach (Process proc in currentlyRunningProcesses)
                 {
                     string path = GetExecutablePathAboveVista(proc.Id);
                     string signature = getMD5SignatureFromFile(path);
                     signaturesOfRunningProcs.Add(signature);
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                }
             }
-            signaturesOfRunningProcs.Clear();
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
         public static void DetectSignature()
