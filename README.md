@@ -19,4 +19,4 @@
 5. Done!
 
 # Contact
-Discord: polaryyoutube#2332 Or BluntMan420#4200
+Discord: polaryyoutube#2332 or join the discord: https://discord.gg/PjbuQFXrNY
