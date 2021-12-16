@@ -12,14 +12,10 @@
 - Anti Memory Dump
 
  # How to Use
- 1. Drag the Light Anti-Cheat prefab into your Scene
- 2. Create a new Script and name it something like OnCheatDetected. In this
-      class you want to add a Method called Detected. Now you can do whatever you want
-      when a cheat was detected, for example kick the player out of the match.
-3. Assign the method on the CheatDetectedEvent from the AntiCheatComponent script.
+1. Drag the Light Anti-Cheat prefab into your Scene
 4. Build your game with Il2cpp.
 5. Copy the Light Anti-Cheat.exe file into your build game folder.
 6. Done!
 
 # Contact
-Discord: polaryyoutube#2332
+Discord: polaryyoutube#2332 Or BluntMan420#4200
