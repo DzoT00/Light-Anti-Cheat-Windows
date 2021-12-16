@@ -12,10 +12,11 @@
 - Anti Memory Dump
 
  # How to Use
-1. Drag the Light Anti-Cheat prefab into your Scene
-4. Build your game with Il2cpp.
-5. Copy the Light Anti-Cheat.exe file into your build game folder.
-6. Done!
+1. Import the Light Anti-Cheat.unitypackage in your unity project.
+2. Drag the Light Anti-Cheat prefab into your Scene.
+3. Build your game with Il2cpp.
+4. Copy the Light Anti-Cheat.exe file into your build game folder.
+5. Done!
 
 # Contact
 Discord: polaryyoutube#2332 Or BluntMan420#4200
